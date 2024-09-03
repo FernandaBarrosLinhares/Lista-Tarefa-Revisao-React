@@ -22,24 +22,43 @@ function App() {
     if (novaTarefa.trim()) {
       const nova = { id: Date.now(), descricao: novaTarefa };
       setTarefas([...tarefas, nova]);
-      setNovaTarefa(''); // Limpa o input após adicionar a tarefa
+      setNovaTarefa(''); 
     }
   };
-
+  const toggleTarefaRealizada = (id) => {
+    const novasTarefas = tarefas.map((tarefa) =>
+      tarefa.id === id ? { ...tarefa, realizada: !tarefa.realizada } : tarefa
+    );
+    setTarefas(novasTarefas);
+  };
 
   return (
-    <>
-       <h1>Lista de Tarefas</h1>
-      <input
-        type="text"
-        value={novaTarefa}
-        onChange={(e) => setNovaTarefa(e.target.value)}
-        placeholder="Digite uma nova tarefa"
-      />
-      <button onClick={adicionarTarefa}>Adicionar Tarefa</button>
-      <ListaTarefas tarefas={tarefas} />
+
+    <div className="container">
+      <h1>Lista de Tarefas</h1>
+      <div className="input-container">
+        <input
+          type="text"
+          value={novaTarefa}
+          onChange={(e) => setNovaTarefa(e.target.value)}
+          placeholder="Digite uma nova tarefa"
+        />
+        <button onClick={adicionarTarefa}>Adicionar Tarefa</button>
+      </div>
+      <ListaTarefas tarefas={tarefas} onToggleRealizada={toggleTarefaRealizada} />
+    </div>
+    // <>
+    //    <h1>Lista de Tarefas</h1>
+    //   <input
+    //     type="text"
+    //     value={novaTarefa}
+    //     onChange={(e) => setNovaTarefa(e.target.value)}
+    //     placeholder="Digite uma nova tarefa"
+    //   />
+    //   <button onClick={adicionarTarefa}>Adicionar Tarefa</button>
+    //   <ListaTarefas tarefas={tarefas} />
     
-    </>
+    // </>
   )
 }
 
