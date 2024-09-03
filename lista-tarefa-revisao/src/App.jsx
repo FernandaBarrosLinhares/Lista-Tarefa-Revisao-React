@@ -47,18 +47,7 @@ function App() {
       </div>
       <ListaTarefas tarefas={tarefas} onToggleRealizada={toggleTarefaRealizada} />
     </div>
-    // <>
-    //    <h1>Lista de Tarefas</h1>
-    //   <input
-    //     type="text"
-    //     value={novaTarefa}
-    //     onChange={(e) => setNovaTarefa(e.target.value)}
-    //     placeholder="Digite uma nova tarefa"
-    //   />
-    //   <button onClick={adicionarTarefa}>Adicionar Tarefa</button>
-    //   <ListaTarefas tarefas={tarefas} />
     
-    // </>
   )
 }
 
